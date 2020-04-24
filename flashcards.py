@@ -26,3 +26,27 @@ def delete_card(index):
     return redirect(url_for('hello'))
   else:
     return render_template('delete-card.html', index = index)
+
+@app.route('/add', methods=['POST', 'GET'])
+def add_card():
+  if (request.method == 'POST'):
+    data = request.form
+    data = dict(data.lists())
+    form_data = {}
+    form_data['question'] = data['question'][0]
+    form_data['answer'] = data['answer'][0]
+    cards.append(form_data)
+    return redirect(url_for('hello'))
+  else:
+    return render_template('add-card.html')
+
+"""
+Things done in add_card
+
+Data form is of ImmuitableMultiDict Type.
+data was converted to normal dict.
+int the dict the value was of list type.
+so new dict of form_data was created to match the format of items in cards list.
+Then form_data was added to cards list.
+
+"""
