@@ -1,0 +1,22 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Welcome to flash cards <a href="https://www.google.com">google</a></h1>
+
+  <h2>Flashcards</h2>
+
+  <ul>
+    {% for card in cards %}
+      <li><a href="{{ url_for('get_cards', index=loop.index0) }}">{{card.question}}</a></li>
+    {% endfor %}
+  </ul>
+
+</body>
+
+</html>

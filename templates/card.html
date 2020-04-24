@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>This is card page</h1>
+  <h2>Question: {{ card.question }}</h2>
+  <h2>Answer: {{ card.answer }}</h2>
+
+  <div>
+    <button><a href="{{ url_for('hello') }}">Welcome Page</a></button>
+    {% if index < total_cards - 1 %}
+      <button><a href="{{ url_for('get_cards', index=index+1) }}">Next Card</a></button>
+    {% else %}
+      <button><a href="{{ url_for('get_cards', index=0) }}">Start Over</a></button>
+    {% endif %}
+  </div>
+
+  <div>
+    <button>Add Card</button>
+    <button><a href="{{url_for('delete_card', index=index)}}">Remove Card</a></button>
+  </div>
+</body>
+</html>
